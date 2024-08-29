@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Record</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style>
+    header {
+        padding: 15px;
+        background-color: antiquewhite;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .btn a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .card-body {
+        background-color: aliceblue;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .card:hover {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+<body>
+
+    <header>
+        <div class="header d-flex justify-content-between align-items-center">
+            <div class="text">
+                <h1>Movie List</h1>
+            </div>
+            <div class="btn btn-primary">
+                <a href="/crud/add">Add New Record</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div class="row">
+            <% users.map((val, index)=> { %>
+                <div class="col-md-3 mb-3" align="center">
+                    <div class="card">
+                        <img src="<%= val.image %>" class="card-img-top" alt="<%= val.name %>"
+                            style="height: 250px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>
+                                    <%= val.name %>
+                                </strong></h5>
+                            <p class="card-text mb-2">
+                                <%= val.description %>
+                            </p>
+                            <p class="card-text mb-2">Price :- <%= val.price %>
+                            </p>
+                            <p class=m-1><a href="/crud/editRecord?id=<%= val.id %>"
+                                    class="btn btn-primary w-100">Edit</a></p>
+                            <p class=m-1><a href="/crud/deleteRecord?id=<%= val.id %>"
+                                    class="btn btn-danger w-100">Delete</a></p>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>
